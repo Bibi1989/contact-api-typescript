@@ -41,7 +41,7 @@ router.put('/:updateID', (req, res) => {
             email: req.body.email,
             website: req.body.website
         }
-        Contacts.findByIdAndUpdate(updateID, updateContact, { new: true }).then(doc => res.status(200).json({ message: "Contact Updated", data: doc })).catch(err => res.status(404).json(err))
+        Contacts.findByIdAndUpdate(updateID, updateContact, { new: true }).then(doc => res.status(200).json({ message: "Contact Updated", data: doc })).catch(err => res.status(404).json({msg: err}))
     } catch (error) {
         res.status(404).json({
             msg: "Invalid Id"
