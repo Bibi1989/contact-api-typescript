@@ -12,6 +12,8 @@ dotenv.config()
 
 import indexRouter from './routes/index';
 import contactRouter from './routes/contactRoute';
+import postRoute from './routes/postRoute';
+import deleteRoute from './routes/deleteRoute';
 
 const app = express();
 
@@ -24,6 +26,9 @@ mongoose.connect(DB_URL, mongoOption, (err: Error) => {
   }
 })
 
+app.set('views', path.join(__dirname, '../views'))
+app.set('view engine', 'ejs')
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -32,6 +37,8 @@ app.use(express.static(path.join(__dirname, '../', 'public')));
 
 app.use('/', indexRouter);
 app.use('/api/contacts', contactRouter);
+app.use('/api/post', postRoute);
+app.use('/api/delete', deleteRoute);
 
 // catch 404 and forward to error handler
 app.use(function(_req, _res, next) {
