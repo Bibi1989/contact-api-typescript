@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         //     message: "Successfully added a contact",
         //     body: contact
         // })
-        res.redirect('/api/contacts');
+        res.redirect('/');
     }
     catch (error) {
         res.status(404).json({ message: error });

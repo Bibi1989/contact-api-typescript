@@ -14,7 +14,7 @@ router.get('/:deletedID', async (req, res) => {
     try {
         const { deletedID } = req.params;
         await contacts_1.default.findByIdAndDelete(deletedID);
-        res.redirect('/api/contacts');
+        res.redirect('/');
     }
     catch (error) {
         res.status(404).json({ msg: error });
